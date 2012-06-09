@@ -3,7 +3,7 @@ file(GLOB_RECURSE SOURCES *.h *.hpp *.cpp *.cc)
 GroupSourcesByFilesystem("${SOURCES}")
 
 include_directories(
-    ${ZLIB_INCLUDE_DIRS}
+    ${ZLIB_INCLUDE_DIR}
 )
 
 add_library(treLib

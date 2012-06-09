@@ -24,6 +24,8 @@
  */
 
 #include <treLib/treClass.hpp>
+
+#include <cstdint>
 #include <iostream>
 #include <sstream>
 #include <zlib.h> // For compress, uncompress...
@@ -620,7 +622,7 @@ bool treClass::writeFileBlock( std::ofstream &file )
 
 	// Get file size...
 	dataFile.seekg( 0, std::ios::end );
-	unsigned int dataFileSize = dataFile.tellg();
+	unsigned int dataFileSize = static_cast<unsigned int>(dataFile.tellg());
 
 	if( !(i->getDataBlock().allocateUncompressedData( dataFileSize )) )
 	{
@@ -636,7 +638,7 @@ bool treClass::writeFileBlock( std::ofstream &file )
 		       dataFileSize );
 
 	// Get offset (from beginning of file) to where data will be written.
-	i->setOffset( file.tellp() );
+	i->setOffset( static_cast<unsigned int>(file.tellp()) );
 
 	// Write datablock...
 	if( !(i->getDataBlock().compressAndWrite( file, i->getFormat() ) ) )
@@ -674,7 +676,7 @@ bool treClass::writeFileBlock( std::ofstream &file )
 
 
     // Get postion in file where compressed file records start...
-    fileOffset = file.tellp();
+    fileOffset = static_cast<unsigned int>(file.tellp());
 
     // Allocate file record block...
     fileFinalSize =
