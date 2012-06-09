@@ -9,3 +9,8 @@ include_directories(
 add_library(treLib
     ${SOURCES}
 )
+
+target_link_libraries(treLib
+    treLib
+    ${ZLIB_LIBRARIES}
+)
