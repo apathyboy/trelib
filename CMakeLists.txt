@@ -14,6 +14,10 @@ option(BUILD_TOOLS
 
 find_package(ZLib REQUIRED)
 
+if(MSVC)
+	get_filename_component(ZLIB_DLL_PATH ${ZLIB_LIBRARIES} PATH)
+endif()
+
 include_directories(
     ${PROJECT_SOURCE_DIR}
 )
