@@ -12,6 +12,23 @@ include(CheckIncludeFiles)
 option(BUILD_TRELIB_TOOLS
     "Explicitly force building of tools" OFF)
 
+if(CMAKE_COMPILER_IS_GNUCXX)
+    set(AdditionalBoostLibs regex)
+endif()
+
+if(MSVC)
+    add_definitions (/D BOOST_ALL_DYN_LINK)
+    message(STATUS "BOOST: Enable dynamic linking")
+    
+    add_definitions(/D BOOST_ALL_NO_LIB)
+    message(STATUS "BOOST: Disable automatic linking")
+endif()
+
+# Use the static/multithreaded libraries.
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+
+find_package(Boost 1.49.0 COMPONENTS filesystem ${AdditionalBoostLibs} REQUIRED)
 find_package(ZLib REQUIRED)
 
 if(MSVC)
