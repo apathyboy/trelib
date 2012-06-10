@@ -9,7 +9,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/build-aux/cmake")
 include(GroupSourcesByFilesystem)
 include(CheckIncludeFiles)
 
-option(BUILD_TOOLS
+option(BUILD_TRELIB_TOOLS
     "Explicitly force building of tools" OFF)
 
 find_package(ZLib REQUIRED)
@@ -24,6 +24,6 @@ include_directories(
 
 add_subdirectory(treLib)
 
-if(BUILD_TOOLS)
+if(BUILD_TRELIB_TOOLS)
     add_subdirectory(tools)
 endif()

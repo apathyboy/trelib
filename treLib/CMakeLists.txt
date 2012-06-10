@@ -12,5 +12,5 @@ add_library(treLib
 
 target_link_libraries(treLib
     treLib
-    ${ZLIB_LIBRARIES}
+    ${ZLIB_LIBRARY_RELEASE}
 )
