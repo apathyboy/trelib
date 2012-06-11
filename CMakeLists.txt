@@ -28,7 +28,7 @@ endif()
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 
-find_package(Boost 1.49.0 COMPONENTS filesystem ${AdditionalBoostLibs} REQUIRED)
+find_package(Boost 1.49.0 COMPONENTS filesystem thread ${AdditionalBoostLibs} REQUIRED)
 find_package(ZLib REQUIRED)
 
 if(MSVC)

@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-#include <mutex>
+#include <boost/thread/mutex.hpp>
 
 #include "tre_data.h"
 
@@ -119,7 +119,7 @@ namespace treLib {
         std::string filename_;
         TreHeader header_;
 
-        std::mutex mutex_;
+        boost::mutex mutex_;
 
         std::vector<TreResourceInfo> resource_block_;
         std::vector<unsigned char> name_block_;
